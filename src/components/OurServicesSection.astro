@@ -1,0 +1,295 @@
+---
+import { Image } from 'astro:assets';
+import store from '../assets/svg/store.svg';
+import handshake from '../assets/svg/handshake.svg';
+import blocks from '../assets/svg/blocks.svg';
+import circuitBoard from '../assets/svg/circuitBoard.svg';
+import zap from '../assets/svg/zap.svg';
+import wegBlanco from '../assets/svg/wegBlanco.svg';
+import check from '../assets/svg/check.svg';
+import undrawCertificate from '../assets/webp/undrawCertificate.webp';
+---
+
+<section class="our-services" id="servicios">
+  <h2 class="our-services__title hidden" data-animation="fadeIn">
+    NUESTROS SERVICIOS
+  </h2>
+
+  <div class="our-services__cards hidden" data-animation="fadeIn">
+    <span class="our-services__card">
+      <Image src={store} class="our-services__card-svg" alt="Icono" />
+      <p class="our-services__card-text">Venta de insumos eléctricos</p>
+    </span>
+    <span class="our-services__card">
+      <Image src={handshake} class="our-services__card-svg" alt="Icono" />
+      <p class="our-services__card-text">
+        Asesoría profesional en electricidad industrial
+      </p>
+    </span>
+    <span class="our-services__card">
+      <Image src={blocks} class="our-services__card-svg" alt="Icono" />
+      <p class="our-services__card-text">
+        Armado de tableros eléctricos a medida
+      </p>
+    </span>
+    <span class="our-services__card">
+      <Image src={circuitBoard} class="our-services__card-svg" alt="Icono" />
+      <p class="our-services__card-text">
+        Reparación de variadores de frecuencia y arranque suave
+      </p>
+    </span>
+    <span class="our-services__card">
+      <Image src={zap} class="our-services__card-svg" alt="Icono" />
+      <p class="our-services__card-text">
+        Reparación de motores eléctricos monofásicos y trifásicos
+      </p>
+    </span>
+  </div>
+  <div class="our-services__technical-assistant hidden" data-animation="fadeIn">
+    <Image
+      src={wegBlanco}
+      class="our-services__technical-assistant-img"
+      alt="WEG"
+    />
+    <div class="our-services__technical-assistant-contain-text">
+      <p class="our-services__technical-assistant-text">
+        Somos asistentes tecnicos autorizados de la Marca WEG en:
+      </p>
+      <span class="our-services__technical-assistant-items-list">
+        <span class="our-services__technical-assistant-item"
+          ><Image
+            src={check}
+            alt={'Icono'}
+            class="our-services__technical-assistant-icon"
+          /><p class="our-services__technical-assistant-text">
+            Motores eléctricos monofásicos y trifásicos de corriente alterna /
+            baja tensión, hasta carcasa IEC 200
+          </p></span
+        >
+        <span class="our-services__technical-assistant-item"
+          ><Image
+            src={check}
+            alt={'Icono'}
+            class="our-services__technical-assistant-icon"
+          /><p class="our-services__technical-assistant-text">
+            Convertidores de frecuencia (baja tensión)
+          </p></span
+        >
+        <span class="our-services__technical-assistant-item"
+          ><Image
+            src={check}
+            alt={'Icono'}
+            class="our-services__technical-assistant-icon"
+          /><p class="our-services__technical-assistant-text">
+            Arranques suaves (baja tensión)
+          </p></span
+        >
+        <span class="our-services__technical-assistant-item"
+          ><Image
+            src={check}
+            alt={'Icono'}
+            class="our-services__technical-assistant-icon"
+          /><p class="our-services__technical-assistant-text">
+            Tableros eléctricos (baja tensión)
+          </p></span
+        >
+      </span>
+    </div>
+    <Image
+      src={undrawCertificate}
+      class="our-services__technical-assistant-img our-services__technical-assistant-img--ilustration"
+      alt="Ilustración"
+      loading="lazy"
+      quality={100}
+    />
+  </div>
+</section>
+<style>
+  .our-services {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem 2rem 2rem 2rem;
+    background-color: var(--blue);
+    gap: 3rem;
+    position: relative;
+  }
+
+  .our-services__title {
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-shadow: var(--text-shadow);
+  }
+
+  .our-services__cards {
+    display: grid;
+    gap: 1rem;
+    width: var(--contain-width);
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+  }
+
+  .our-services__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: white;
+    border: var(--orange) 0.25rem solid;
+    border-radius: var(--border-radius);
+  }
+
+  .our-services__card-text {
+    color: var(--blue);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .our-services__card-svg {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .our-services__technical-assistant {
+    display: grid;
+    align-items: center;
+    gap: 2rem;
+    width: var(--contain-width);
+    text-shadow: var(--text-shadow);
+  }
+
+  .our-services__technical-assistant-contain-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .our-services__technical-assistant-text {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: start;
+  }
+
+  .our-services__technical-assistant-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0;
+  }
+
+  .our-services__technical-assistant-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .our-services__technical-assistant-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .our-services__technical-assistant-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .our-services__technical-assistant-img--ilustration {
+    display: none;
+  }
+
+  /* Media Queries */
+
+  /* For devices with a minimum width of 640px */
+  @media (min-width: 640px) {
+    .our-services__title {
+      font-size: 1.5rem;
+    }
+
+    .our-services__card-text {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* For devices with a minimum width of 768px */
+  @media (min-width: 768px) {
+    .our-services__title {
+      font-size: 2rem;
+    }
+
+    .our-services__cards {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .our-services__card-svg {
+      width: 4rem;
+      height: 4rem;
+    }
+
+    .our-services__technical-assistant {
+      grid-template-columns: 1fr 2fr;
+    }
+
+    .our-services__technical-assistant-text {
+      font-size: 1.25rem;
+    }
+
+    .our-services__technical-assistant-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  /* For devices with a minimum width of 1024px */
+  @media (min-width: 1024px) {
+    .our-services__cards {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .our-services__card-svg {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    .our-services__card-text {
+      font-size: 1.5rem;
+    }
+
+    .our-services__technical-assistant {
+      grid-template-columns: 1fr 2fr 1fr;
+      margin-top: 4rem;
+    }
+
+    .our-services__technical-assistant-img--ilustration {
+      display: inline-block;
+    }
+  }
+
+  /* For devices with a minimum width of 1280px */
+  @media (min-width: 1280px) {
+    .our-services__technical-assistant-text {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* For devices with a minimum width of 1536px */
+  @media (min-width: 1536px) {
+    .our-services__title {
+      font-size: 2.5rem;
+    }
+
+    .our-services__card-text {
+      font-size: 1.75rem;
+    }
+
+    .our-services__technical-assistant-icon {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+</style>

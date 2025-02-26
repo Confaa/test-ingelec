@@ -1,0 +1,174 @@
+---
+import logoIngelec from '../assets/svg/logoIngelec.svg';
+import mail from '../assets/svg/mail.svg';
+import smartphone from '../assets/svg/smartphone.svg';
+import { Image } from 'astro:assets';
+---
+
+<footer class="footer" id="contacto">
+  <span class="footer__filter"></span>
+  <div class="footer__contain hidden" data-animation="fadeIn">
+    <Image src={logoIngelec} class={'footer__logo'} alt="logo" />
+    <nav class="footer__nav">
+      <h3 class="footer__nav-title">NAVEGACIÓN</h3>
+      <p class="footer__nav-item">
+        <a href="#home" class="footer__nav-link">- Inicio</a>
+      </p>
+      <p class="footer__nav-item">
+        <a href="#servicios" class="footer__nav-link">- Servicios</a>
+      </p>
+      <p class="footer__nav-item">
+        <a href="#marcas" class="footer__nav-link">- Marcas</a>
+      </p>
+      <p class="footer__nav-item">
+        <a href="#nosotros" class="footer__nav-link">- Nosotros</a>
+      </p>
+      <p class="footer__nav-item">
+        <a href="#nuestro-local" class="footer__nav-link">- Nuestro local</a>
+      </p>
+      <p class="footer__nav-item">
+        <a href="#contacto" class="footer__nav-link">- Contacto</a>
+      </p>
+    </nav>
+    <span class="footer__contact">
+      <h3 class="footer__contact-title">CONTACTO</h3>
+
+      <span class="footer__contact-item-contain">
+        <Image
+          src={smartphone}
+          class={'footer__contact-item-svg'}
+          alt="smartphone"
+        />
+        <p class="footer__contact-item">+54 9 3456 574496</p>
+      </span>
+      <span class="footer__contact-item-contain">
+        <Image src={mail} class={'footer__contact-item-svg'} alt="mail" />
+        <p class="footer__contact-item">ventas@ingelecsrl.com.ar</p>
+      </span>
+    </span>
+  </div>
+
+  <style>
+    /* Footer container with background image */
+    .footer {
+      position: relative;
+      background-image: url('../assets/webp/footerBackground.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Overlay filter for footer */
+    .footer__filter {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Footer content grid layout */
+    .footer__contain {
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Navigation section hidden by default */
+    .footer__nav {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: var(--blue);
+      justify-self: center;
+      align-self: flex-start;
+    }
+
+    .footer__nav-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .footer__nav-item {
+      font-size: 1.2rem;
+    }
+
+    .footer__nav-link {
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--blue);
+    }
+
+    /* Contact section styling */
+    .footer__contact {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: var(--blue);
+      justify-self: center;
+      align-self: flex-start;
+    }
+
+    .footer__contact-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .footer__contact-item-contain {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .footer__contact-item {
+      font-size: 1.25rem;
+      font-weight: 500;
+    }
+
+    .footer__contact-item-svg {
+      height: 2rem;
+      width: 2rem;
+    }
+
+    /* Footer logo hidden by default */
+    .footer__logo {
+      display: none;
+      height: 5rem;
+    }
+
+    /* Media queries */
+
+    /* For devices with a minimum width of 768px (tablets and small laptops) */
+    @media (min-width: 768px) {
+      .footer__contain {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer__contact {
+        justify-self: center;
+      }
+
+      .footer__logo {
+        display: block;
+      }
+    }
+
+    /* For devices with a minimum width of 1280px (large laptops and desktops) */
+    @media (min-width: 1280px) {
+      .footer__contain {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer__nav {
+        display: flex;
+      }
+    }
+  </style>
+</footer>

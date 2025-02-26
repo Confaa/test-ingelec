@@ -1,0 +1,26 @@
+{
+  "name": "websiteingelec",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write ./src/**/*.{astro,js,ts,md,json}"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.3",
+    "@astrojs/sitemap": "^3.1.6",
+    "animejs": "^3.2.2",
+    "astro": "^4.15.1",
+    "sharp": "^0.33.5",
+    "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@types/animejs": "^3.1.12",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1"
+  }
+}

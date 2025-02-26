@@ -1,0 +1,185 @@
+---
+import location from '../assets/svg/location.svg';
+import backgroundBussiness from '../assets/webp/backgroundBussiness.webp';
+import { Image } from 'astro:assets';
+---
+
+<section class="bussiness hidden" data-animation="fadeIn" id="nuestro-local">
+  <span class="bussiness__rectangle"></span>
+  <div class="bussiness__contain">
+    <span class="bussiness__contain-location">
+      <h2 class="bussiness__location-title">¿DONDE NOS ENCONTRÁS?</h2>
+      <span class="bussiness__contain-iframe">
+        <iframe
+          title="Ubicación de INGELEC S.R.L."
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3428.31247872334!2d-57.994152923552065!3d-30.76580816510484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ad0d3b6aeb5cbb%3A0xe7e0d677f0f0886!2sINGELEC%20S.R.L.!5e0!3m2!1ses-419!2sar!4v1725288358133!5m2!1ses-419!2sar"
+          width="500"
+          height="350"
+          class="bussiness__iframe"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </span>
+      <span class="bussiness__location">
+        <Image
+          src={location}
+          class={'bussiness__location-icon'}
+          alt="location"
+        />
+
+        <p class="bussiness__location-text">
+          Av. Alem 1355 (E3228) - Chajarí, Entre Ríos, Argentina
+        </p>
+      </span>
+    </span>
+    <Image
+      class="bussiness__img"
+      src={backgroundBussiness}
+      alt="Nuestro local"
+      loading="lazy"
+      quality={100}
+    />
+  </div>
+</section>
+<style>
+  /* Main container for the business section */
+  .bussiness {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Rotated rectangle */
+  .bussiness__rectangle {
+    display: none;
+    position: absolute;
+    width: 65%;
+    height: 150%;
+    rotate: 100deg;
+    background-color: var(--blue);
+    border-top: var(--orange-with-opacity) 0.5rem solid;
+    z-index: 3;
+  }
+
+  /* Main grid layout for business content */
+  .bussiness__contain {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--blue);
+    height: 100%;
+  }
+
+  .bussiness__contain-iframe {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+  }
+
+  .bussiness__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* Location container with flex layout */
+  .bussiness__contain-location {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 3rem;
+    z-index: 4;
+  }
+
+  .bussiness__location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  /* Location title styling */
+  .bussiness__location-title {
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: var(--text-shadow);
+  }
+
+  .bussiness__location-icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .bussiness__location-text {
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  /* Image styling */
+  .bussiness__img {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  /* Media queries */
+
+  /* For devices with a minimum width of 640px */
+  @media (min-width: 640px) {
+    .bussiness__location-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* For devices with a minimum width of 1024px */
+  @media (min-width: 1024px) {
+    .bussiness__rectangle {
+      display: block;
+      left: -20%;
+      bottom: -12.5%;
+    }
+
+    .bussiness__location-title {
+      font-size: 2rem;
+    }
+
+    .bussiness__contain {
+      grid-template-columns: 40% 60%;
+    }
+  }
+
+  /* For devices with a minimum width of 1280px */
+  @media (min-width: 1280px) {
+    .bussiness__rectangle {
+      display: block;
+      left: -10%;
+      bottom: -12.5%;
+    }
+    .bussiness__location-title {
+      font-size: 2rem;
+    }
+    .bussiness__contain {
+      grid-template-columns: 40% 60%;
+    }
+
+  /* For devices with a minimum width of 1536px */
+  @media (min-width: 1536px) {
+    .bussiness__location-title {
+      font-size: 2.5rem;
+    }
+  }
+</style>

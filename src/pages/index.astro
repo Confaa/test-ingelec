@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Ingelec S.R.L." />
+<style is:global>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/font/Montserrat/Montserrat-VariableFont_wght.ttf');
+  }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgb(0, 87, 157);
+  }
+
+  .hidden {
+    opacity: 0;
+  }
+  :root {
+    /* Colors */
+    --blue: rgb(0, 87, 157);
+    --blue-with-opacity: rgba(0, 87, 157, 0.8);
+    --orange: rgb(232, 142, 0);
+    --orange-with-opacity: rgba(232, 142, 0, 0.8);
+    --white: rgb(255, 255, 255);
+    --black: rgb(0, 0, 0);
+    --background-header: rgba(0, 0, 0, 0.6);
+
+    /* Variables */
+    --text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+      4px 4px 8px rgba(0, 0, 0, 0.2), 6px 6px 12px rgba(0, 0, 0, 0.1);
+    --border-radius: 0.5rem;
+    --transition: 300ms;
+    --transition-mobile-menu: 600ms;
+    --contain-width: 80%;
+    --drop-shadow-image: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2))
+      drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.15))
+      drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.1));
+    --header-padding-top: 0;
+  }
+</style>

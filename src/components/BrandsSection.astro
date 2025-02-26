@@ -1,0 +1,163 @@
+---
+import wave1 from '../assets/svg/wave1.svg';
+import aea from '../assets/webp/brands/aea.webp';
+import argenplas from '../assets/webp/brands/argenplas.webp';
+import circutor from '../assets/webp/brands/circutor.webp';
+import ersha from '../assets/webp/brands/ersha.webp';
+import finder from '../assets/webp/brands/finder.webp';
+import fusse from '../assets/webp/brands/fusse.webp';
+import gatti from '../assets/webp/brands/gatti.webp';
+import genrod from '../assets/webp/brands/genrod.webp';
+import microcontrol from '../assets/webp/brands/microcontrol.webp';
+import nuban from '../assets/webp/brands/nuban.webp';
+import prysmian from '../assets/webp/brands/prysmian.webp';
+import schneider from '../assets/webp/brands/schneider.webp';
+import stm from '../assets/webp/brands/stm.webp';
+import tea from '../assets/webp/brands/tea.webp';
+import weg from '../assets/webp/brands/weg.webp';
+import { Image, Picture } from 'astro:assets';
+---
+
+<section class="brands" id="marcas">
+  <Picture src={wave1} class="brands__wave" alt="Olas" />
+
+  <h2 class="brands__title hidden" data-animation="fadeIn">
+    MARCAS CON LAS QUE TRABAJAMOS
+  </h2>
+  <div class="brands__items hidden" data-animation="fadeIn">
+    <Image src={weg} class="brands__item" alt="WEG" loading="lazy" />
+    <Image src={finder} class="brands__item" alt="Finder" loading="lazy" />
+    <Image src={ersha} class="brands__item" alt="Ersha" loading="lazy" />
+    <Image
+      src={schneider}
+      class="brands__item"
+      alt="Schneider"
+      loading="lazy"
+    />
+    <Image src={fusse} class="brands__item" alt="Fusse" loading="lazy" />
+    <Image src={aea} class="brands__item" alt="AEA" loading="lazy" />
+    <Image src={prysmian} class="brands__item" alt="Prysmian" loading="lazy" />
+    <Image
+      src={argenplas}
+      class="brands__item"
+      alt="Argenplas"
+      loading="lazy"
+    />
+    <Image src={gatti} class="brands__item" alt="Gatti" loading="lazy" />
+    <Image src={genrod} class="brands__item" alt="Genrod" loading="lazy" />
+    <Image
+      src={microcontrol}
+      class="brands__item"
+      alt="Microcontrol"
+      loading="lazy"
+    />
+    <Image src={nuban} class="brands__item" alt="Nuban" loading="lazy" />
+    <Image src={tea} class="brands__item" alt="TEA" loading="lazy" />
+    <Image src={stm} class="brands__item" alt="STM" loading="lazy" />
+    <Image src={circutor} class="brands__item" alt="Circutor" loading="lazy" />
+  </div>
+</section>
+<style>
+  /* Brands section with flex layout and centered content */
+  .brands {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    gap: 3rem;
+    background-color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Wave background image */
+  .brands__wave {
+    position: absolute;
+    top: -1%;
+    left: 0;
+    width: 100dvw;
+    height: auto;
+    object-fit: cover;
+  }
+
+  /* Title styling */
+  .brands__title {
+    color: var(--blue);
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-shadow: var(--text-shadow);
+    text-align: center;
+  }
+
+  /* Brands items in grid layout */
+  .brands__items {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 2rem;
+    width: var(--contain-width);
+  }
+
+  .brands__item {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: var(--drop-shadow-image);
+  }
+
+  /* Media queries */
+
+  /* For devices with a minimum width of 640px */
+  @media (min-width: 640px) {
+    .brands__title {
+      font-size: 1.5rem;
+    }
+
+    .brands__items {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  /* For devices with a minimum width of 768px */
+  @media (min-width: 768px) {
+    .brands {
+      padding-top: 6rem;
+    }
+  }
+
+  /* For devices with a minimum width of 1024px */
+  @media (min-width: 1024px) {
+    .brands__title {
+      font-size: 1.5rem;
+    }
+
+    .brands__items {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  /* For devices with a minimum width of 1280px */
+  @media (min-width: 1280px) {
+    .brands__title {
+      font-size: 2rem;
+    }
+
+    .brands__items {
+      grid-template-columns: repeat(5, 1fr);
+    }
+  }
+
+  /* For devices with a minimum width of 1536px */
+  @media (min-width: 1536px) {
+    .brands {
+      padding-top: 10rem;
+    }
+    .brands__wave {
+      top: -5%;
+    }
+    .brands__title {
+      font-size: 2.5rem;
+    }
+  }
+</style>

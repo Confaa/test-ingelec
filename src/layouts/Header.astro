@@ -1,0 +1,223 @@
+---
+import logoBlanco from '../assets/svg/logoIngelecBlanco1px.svg';
+import { Image } from 'astro:assets';
+---
+
+<header class="header" id="header">
+  <a href="#home" class="header__logo">
+    <Image src={logoBlanco} alt="Ingelec Logo" height={48} loading="eager" />
+  </a>
+  <nav class="header__nav header__nav--hidden">
+    <a href="#servicios" class="header__nav-item">Servicios</a>
+    <a href="#marcas" class="header__nav-item">Marcas</a>
+    <a href="#nosotros" class="header__nav-item">Nosotros</a>
+    <a href="#nuestro-local" class="header__nav-item">Nuestro Local</a>
+    <a href="#contacto" class="header__nav-item">Contacto</a>
+  </nav>
+  <span class="header__mobile-menu" id="mobile-menu">
+    <span class="header__mobile-menu-top"></span>
+    <span class="header__mobile-menu-center"></span>
+    <span class="header__mobile-menu-bottom"></span>
+  </span>
+</header>
+<style>
+  /* Header with flex layout and fixed position */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100dvw;
+    z-index: 1000;
+    transition: var(--transition);
+  }
+
+  /* Background color when scrolled */
+  .header--scrolled {
+    background-color: var(--background-header);
+  }
+
+  /* Logo with cursor pointer */
+  .header__logo {
+    cursor: pointer;
+  }
+
+  /* Navigation bar for larger screens */
+  .header__nav {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    transition: var(--transition-mobile-menu);
+  }
+
+  /* Mobile menu hidden by default */
+  .header__mobile-menu {
+    display: none;
+    align-items: end;
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: pointer;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+
+  /* Styling for mobile menu lines */
+  .header__mobile-menu-top,
+  .header__mobile-menu-center,
+  .header__mobile-menu-bottom {
+    height: 0.25rem;
+    background-color: var(--white);
+    text-shadow: var(--text-shadow);
+    border-radius: var(--border-radius);
+  }
+
+  .header__mobile-menu-top {
+    width: 2.5rem;
+  }
+
+  .header__mobile-menu-center {
+    width: 2.25rem;
+  }
+
+  .header__mobile-menu-bottom {
+    width: 2rem;
+  }
+
+  /* Navigation item styles */
+  .header__nav-item {
+    color: var(--white);
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    cursor: pointer;
+    text-shadow: var(--text-shadow);
+    text-decoration: none;
+    transition: var(--transition);
+  }
+
+  .header__nav-item:hover {
+    background-color: var(--blue-with-opacity);
+  }
+
+  .header__nav-item--active {
+    background-color: var(--blue);
+  }
+
+  /* Media query for screens smaller than 1024px */
+  @media (max-width: 1024px) {
+    .header__nav {
+      padding: 1rem;
+      padding-top: var(--header-padding-top);
+      position: absolute;
+      flex-direction: column;
+      top: 0;
+      right: 0;
+      background-color: var(--background-header);
+      height: 100dvh;
+      width: fit-content;
+      align-items: end;
+    }
+
+    .header__nav--hidden {
+      right: -100%;
+    }
+
+    .header__mobile-menu {
+      display: flex;
+    }
+  }
+</style>
+
+<script>
+  const header = document.getElementsByClassName('header')[0];
+  const navItems = document.querySelectorAll('.header__nav-item');
+  const sections = document.querySelectorAll('section[id]');
+  const mobileMenu = document.querySelector('.header__mobile-menu');
+  const nav = document.querySelector('.header__nav');
+
+  // Función para manejar el scroll y activar el nav-item correspondiente
+  const handleScroll = () => {
+    const { scrollY, innerHeight } = window;
+    const documentHeight = document.documentElement.scrollHeight;
+
+    // Añadir o quitar la clase scrolled cuando se hace scroll
+    header.classList.toggle('header--scrolled', scrollY > 0);
+
+    if (scrollY === 0) {
+      deactivateAllNavItems();
+    } else if (scrollY + innerHeight >= documentHeight - 50) {
+      activateNavItem('#contacto');
+    } else {
+      updateActiveSection();
+    }
+  };
+
+  // Activar un item de navegación
+  const activateNavItem = (id: string) => {
+    navItems.forEach((item) => {
+      item.classList.toggle(
+        'header__nav-item--active',
+        item.getAttribute('href') === id
+      );
+    });
+  };
+
+  // Desactivar todos los items de navegación
+  const deactivateAllNavItems = () => {
+    navItems.forEach((item) =>
+      item.classList.remove('header__nav-item--active')
+    );
+  };
+
+  // Actualizar el item de navegación activo basado en la sección visible
+  const updateActiveSection = () => {
+    const activeSection = [...sections].reverse().find((section) => {
+      const { top, bottom } = section.getBoundingClientRect();
+      return top <= window.innerHeight / 2 && bottom >= window.innerHeight / 2;
+    });
+
+    if (activeSection && activeSection.id !== 'home') {
+      activateNavItem(`#${activeSection.id}`);
+    } else {
+      deactivateAllNavItems();
+    }
+  };
+
+  // Event listener para el scroll y el resize
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('resize', handleScroll);
+
+  // Llamada inicial para establecer el estado correcto cuando se carga la página
+  handleScroll();
+
+  // Ajuste del padding-top de .header__nav basado en la altura del header
+  window.addEventListener('load', () => {
+    const header = document.querySelector<HTMLElement>('#header');
+    const headerHeight = header?.offsetHeight || 0;
+
+    // Inyectar el valor calculado en la variable CSS
+    document.documentElement.style.setProperty(
+      '--header-padding-top',
+      `${1.5 * headerHeight}px`
+    );
+  });
+
+  // Mostrar/ocultar el menú de navegación móvil
+  mobileMenu?.addEventListener('click', () => {
+    nav?.classList.toggle('header__nav--hidden');
+  });
+
+  // Cerrar el menú móvil cuando se hace clic en un ítem de navegación
+  navItems.forEach((item) => {
+    item.addEventListener('click', () => {
+      if (!nav?.classList.contains('header__nav--hidden')) {
+        nav?.classList.add('header__nav--hidden');
+      }
+    });
+  });
+</script>

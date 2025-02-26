@@ -1,0 +1,176 @@
+<section class="front-page" id="home">
+  <span class="front-page__rectangle"></span>
+  <div class="front-page__contain-text">
+    <h2 class="front-page__title">Motores y Tableros Eléctricos</h2>
+    <p class="front-page__text">
+      Más de 25 años brindando soluciones eléctricas industriales en Chajarí,
+      Entre Ríos, y en todo el país.
+    </p>
+    <a href="#nosotros" class="front-page__link">Conocé más sobre nosotros</a>
+  </div>
+</section>
+<style>
+  /* Front page container with background image */
+  .front-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 2rem;
+    background-image: url('../assets/webp/backgroundFrontPage.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+  }
+
+  /* Rotated rectangle */
+  .front-page__rectangle {
+    display: none;
+    position: absolute;
+    width: 80%;
+    height: 120%;
+    rotate: 80deg;
+    background: linear-gradient(
+      90deg,
+      var(--blue-with-opacity) 0%,
+      var(--blue) 90%,
+      var(--blue) 100%
+    );
+    border-top: var(--orange-with-opacity) 0.5rem solid;
+  }
+
+  /* Text container */
+  .front-page__contain-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    gap: 1rem;
+    z-index: 1;
+    text-shadow:
+      2px 2px 4px rgba(0, 0, 0, 0.3),
+      4px 4px 8px rgba(0, 0, 0, 0.2),
+      6px 6px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .front-page__title {
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .front-page__text {
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .front-page__link {
+    background-color: var(--orange-with-opacity);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    text-decoration: none;
+    width: fit-content;
+    transition: var(--transition);
+  }
+
+  .front-page__link:hover {
+    background-color: var(--orange);
+  }
+
+  /* Media queries */
+
+  /* For devices with a minimum width of 640px */
+  @media (min-width: 640px) {
+    .front-page__title {
+      font-size: 2rem;
+    }
+  }
+
+  /* For devices with a minimum width of 768px */
+  @media (min-width: 768px) {
+    .front-page__contain-text {
+      margin-right: 20%;
+    }
+
+    .front-page__title {
+      font-size: 3rem;
+    }
+
+    .front-page__text {
+      font-size: 1.5rem;
+    }
+
+    .front-page__link {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* For devices with a minimum width of 1024px */
+  @media (min-width: 1024px) {
+    .front-page {
+      padding: 4rem;
+      align-items: flex-start;
+    }
+
+    .front-page__rectangle {
+      display: block;
+      left: -25%;
+      bottom: -12.5%;
+    }
+
+    .front-page__contain-text {
+      align-items: start;
+      text-align: start;
+      left: 2rem;
+      margin-right: 62.5%;
+      transform: translateY(-30%);
+    }
+
+    .front-page__text {
+      font-size: 1.5rem;
+    }
+
+    .front-page__link {
+      font-size: 1.5rem;
+    }
+  }
+
+  /* For devices with a minimum width of 1280px */
+  @media (min-width: 1280px) {
+    .front-page__rectangle {
+      left: -30%;
+    }
+
+    .front-page__title {
+      font-size: 2.5rem;
+    }
+  }
+
+  /* For devices with a minimum width of 1536px */
+  @media (min-width: 1536px) {
+    .front-page__title {
+      font-size: 3.5rem;
+    }
+
+    .front-page__text {
+      font-size: 1.75rem;
+    }
+
+    .front-page__link {
+      font-size: 1.75rem;
+    }
+  }
+</style>

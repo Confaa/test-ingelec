@@ -1,0 +1,87 @@
+---
+import OurServicesSection from '../components/OurServicesSection.astro';
+import Header from './Header.astro';
+import Main from './Main.astro';
+import FrontPageSection from '../components/FrontPageSection.astro';
+import BrandsSection from '../components/BrandsSection.astro';
+import UsSection from '../components/UsSection.astro';
+import BussinessSection from '../components/BussinessSection.astro';
+import Footer from '../layouts/Footer.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content={title} />
+    <meta
+      name="description"
+      content="Motores y Tableros Eléctricos - Más de 25 años brindando soluciones eléctricas industriales en Chajarí, Entre Ríos, y en todo el país."
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <script src="../utils/animations.js"></script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <Main>
+      <FrontPageSection />
+      <OurServicesSection />
+      <BrandsSection />
+      <UsSection />
+      <BussinessSection />
+    </Main>
+    <Footer />
+    <script>
+      const smoothScroll = (target: string, duration: number) => {
+        const targetElement = document.querySelector(target);
+        if (!targetElement) return;
+
+        const targetPosition = targetElement.getBoundingClientRect().top;
+        const startPosition = window.pageYOffset;
+        let startTime: number | null = null;
+
+        const ease = (t: number, b: number, c: number, d: number) => {
+          t /= d / 2;
+          if (t < 1) return (c / 2) * t * t + b;
+          t--;
+          return (-c / 2) * (t * (t - 2) - 1) + b;
+        };
+
+        const animationScroll = (currentTime: number) => {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const run = ease(
+            timeElapsed,
+            startPosition,
+            targetPosition,
+            duration
+          );
+          window.scrollTo(0, run);
+          if (timeElapsed < duration) requestAnimationFrame(animationScroll);
+        };
+
+        requestAnimationFrame(animationScroll);
+      };
+
+      document
+        .querySelectorAll<HTMLAnchorElement>('a[href^="#"]')
+        .forEach((anchor) => {
+          anchor.addEventListener('click', (e: Event) => {
+            e.preventDefault();
+            const target = anchor.getAttribute('href');
+            if (target) smoothScroll(target, 1500);
+          });
+        });
+    </script>
+  </body>
+</html>

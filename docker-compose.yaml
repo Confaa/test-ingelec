@@ -1,0 +1,21 @@
+services:
+  websiteingelec:
+    build: .
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.websiteingelec.rule=Host(`ingelecsrl.com.ar`)"
+      - "traefik.http.routers.websiteingelec.entrypoints=websecure"
+      - "traefik.http.routers.websiteingelec.tls=true"
+      - "traefik.http.routers.websiteingelec.tls.certresolver=letencrypt"
+      - "traefik.http.services.websiteingelec.loadbalancer.server.port=80"
+    ports:
+      - "80"
+    environment:
+      NODE_ENV: production
+    networks:
+      - websiteingelec-network
+networks:
+  websiteingelec-network:
+    driver: bridge
+    
